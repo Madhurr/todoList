@@ -12,6 +12,14 @@ class TodolistViewController: UITableViewController {
     
     var items : [CheckListItem]
     
+    
+    @IBAction func addItem(_ sender: Any) {
+        let newRowindex = items.count
+        let item = CheckListItem()
+        item.text = "I am New Row"
+        item.checked = false
+        items.append(item)
+    }
 
     required init?(coder aDecoder: NSCoder) {
         
@@ -72,6 +80,7 @@ class TodolistViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -97,6 +106,7 @@ class TodolistViewController: UITableViewController {
         return cell
     }
   
+
     
     
     func configureText(for cell : UITableViewCell , with item: CheckListItem){
