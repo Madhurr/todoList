@@ -12,18 +12,20 @@
 		E04E1EA12311B4CE008860FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E04E1E9F2311B4CE008860FA /* Main.storyboard */; };
 		E04E1EA32311B4CF008860FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E04E1EA22311B4CF008860FA /* Assets.xcassets */; };
 		E04E1EA62311B4CF008860FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E04E1EA42311B4CF008860FA /* LaunchScreen.storyboard */; };
+		E09EA7A4232B7A790047A439 /* AdditemViewControllerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09EA7A3232B7A780047A439 /* AdditemViewControllerTableViewController.swift */; };
 		E0D5502B231CEAC300819195 /* CheckListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D5502A231CEAC300819195 /* CheckListItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E04E1E982311B4CE008860FA /* toDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = toDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E04E1E9B2311B4CE008860FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E04E1E9D2311B4CE008860FA /* TodolistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodolistViewController.swift; sourceTree = "<group>"; };
+		E04E1E9D2311B4CE008860FA /* TodolistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TodolistViewController.swift; path = ../TodolistViewController.swift; sourceTree = "<group>"; };
 		E04E1EA02311B4CE008860FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E04E1EA22311B4CF008860FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E04E1EA52311B4CF008860FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E04E1EA72311B4CF008860FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E0D5502A231CEAC300819195 /* CheckListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListItem.swift; sourceTree = "<group>"; };
+		E09EA7A3232B7A780047A439 /* AdditemViewControllerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditemViewControllerTableViewController.swift; sourceTree = "<group>"; };
+		E0D5502A231CEAC300819195 /* CheckListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CheckListItem.swift; path = ../CheckListItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +42,7 @@
 		E029E8E42312FEBA0069823B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E0D5502A231CEAC300819195 /* CheckListItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -54,6 +57,8 @@
 		E029E8E62312FED30069823B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E04E1E9D2311B4CE008860FA /* TodolistViewController.swift */,
+				E09EA7A3232B7A780047A439 /* AdditemViewControllerTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -81,12 +86,10 @@
 				E029E8E52312FECC0069823B /* View */,
 				E029E8E42312FEBA0069823B /* Model */,
 				E04E1E9B2311B4CE008860FA /* AppDelegate.swift */,
-				E04E1E9D2311B4CE008860FA /* TodolistViewController.swift */,
 				E04E1E9F2311B4CE008860FA /* Main.storyboard */,
 				E04E1EA22311B4CF008860FA /* Assets.xcassets */,
 				E04E1EA42311B4CF008860FA /* LaunchScreen.storyboard */,
 				E04E1EA72311B4CF008860FA /* Info.plist */,
-				E0D5502A231CEAC300819195 /* CheckListItem.swift */,
 			);
 			path = toDoList;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 				E04E1E9E2311B4CE008860FA /* TodolistViewController.swift in Sources */,
 				E0D5502B231CEAC300819195 /* CheckListItem.swift in Sources */,
 				E04E1E9C2311B4CE008860FA /* AppDelegate.swift in Sources */,
+				E09EA7A4232B7A790047A439 /* AdditemViewControllerTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

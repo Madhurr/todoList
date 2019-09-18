@@ -8,7 +8,8 @@
 
 import UIKit
 
-class TodolistViewController: UITableViewController {
+class TodolistViewController: UITableViewController , ItemDetailViewControllerDelegate {
+  
     
     var items : [CheckListItem]
     
@@ -17,8 +18,11 @@ class TodolistViewController: UITableViewController {
         let newRowindex = items.count
         let item = CheckListItem()
         item.text = "I am New Row"
-        item.checked = false
+        item.checked = true
         items.append(item)
+        let indexPath = IndexPath(row: newRowindex, section: 0)
+        let indexPaths = [indexPath]
+        tableView.insertRows(at: indexPaths, with: .automatic)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -72,9 +76,24 @@ class TodolistViewController: UITableViewController {
         row7item.text = "Eat Ice cream"
         row7item.checked = false
         items.append(row7item)
-
-        
         super.init(coder: aDecoder)
+    }
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "addItem"{
+            let controller = segue.destination as! itemDetailVC
+            controller.delegate = self
+        }
+        if segue.identifier == "editItemSegue"{
+            let controller = segue.destination as! itemDetailVC
+            controller.delegate = self
+            if let indexPath = tableView.indexPath(for: sender as! UITableViewCell){
+                controller.itemToEdit = items[indexPath.row]
+            }
+        }
+        
     }
     
     override func viewDidLoad() {
@@ -89,12 +108,10 @@ class TodolistViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) {
-    
             let item = items[indexPath.row]
             item.toggleChecked()
             configureCheckMark(for: cell, with: item)
         }
-        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -106,8 +123,6 @@ class TodolistViewController: UITableViewController {
         return cell
     }
   
-
-    
     
     func configureText(for cell : UITableViewCell , with item: CheckListItem){
         let label = cell.viewWithTag(1000) as! UILabel
@@ -117,12 +132,42 @@ class TodolistViewController: UITableViewController {
     
     
     func configureCheckMark(for cell: UITableViewCell , with item: CheckListItem){
+        let label = cell.viewWithTag(1001) as! UILabel
         if item.checked{
-            cell.accessoryType = .checkmark
+            label.text = "√"
         }else{
-            cell.accessoryType = .none
+            label.text = ""
         }
     }
-   
+    
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        items.remove(at: indexPath.row)
+        tableView.reloadData()
+    }
+    
+    
+    func itemDetailViewControllerDelegateDidCancel(_ controller: itemDetailVC) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func itemDetailViewControllerDelegate(_ controller: itemDetailVC, didFinishAdding item: CheckListItem) {
+        let newRowindex = items.count
+        items.append(item)
+        let indexPath = IndexPath(row: newRowindex, section: 0)
+        let indexPaths = [indexPath]
+        tableView .insertRows(at: indexPaths, with: .automatic)
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func itemDetailViewControllerDelegate(_ controller: itemDetailVC, didFinishEditingitem item: CheckListItem) {
+        if let index = items.firstIndex(of: item){
+            let indexPath = IndexPath(row: index, section: 0)
+            if let cell = tableView.cellForRow(at: indexPath){
+                configureText(for: cell, with: item)
+            }
+        }
+        navigationController?.popViewController(animated: true)
+    }
 }
 
